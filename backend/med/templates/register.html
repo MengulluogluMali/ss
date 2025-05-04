@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% load static %}
+{% block css_files %} 
+<link rel="stylesheet" href="{% static 'cssfiles/register.css' %}">
+{% endblock %}
+  <title>Register</title>
+</head>
+<body>
+  <div class="register">
+  <h2> Register </h2>
+  <form id="registerForm">
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="text" id="first_name" placeholder="Name" required><br>
+    <input type="text" id="last_name" placeholder="Last Name" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+  </form>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url "login_page" %}" style=" color:black; font-family: 'Times New Roman', Times, serif;">Already have an account? Login here</a>
+  </li>
+</div>
+
+  <a id="home-url" href="#" data-url="{% url 'home' %}"></a>
+  <script>
+    const registerForm = document.getElementById("registerForm");
+    const homeUrl = document.getElementById('home-url').dataset.url;
+
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const userData = {
+        username: document.getElementById("username").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        first_name: document.getElementById("first_name").value,
+        last_name: document.getElementById("last_name").value,
+      };
+
+      try {
+        await fetch("http://localhost:8000/api/users/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
+
+        // Otomatik giriş
+        const loginRes = await fetch("http://localhost:8000/api/token/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: userData.username,
+            password: userData.password,
+          }),
+        });
+
+        const loginData = await loginRes.json();
+
+        localStorage.setItem("access_token", loginData.access);
+        alert("Başarıyla kayıt oldunuz ve giriş yaptınız!");
+        window.location.href = homeUrl;   // Buraya yönlendirme
+
+        // window.location.href = "/dashboard.html";
+
+      } catch (error) {
+        alert("Kayıt başarısız!");
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

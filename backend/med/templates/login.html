@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  {% load static %}
+{% block css_files %} 
+<link rel="stylesheet" href="{% static 'cssfiles/login.css' %}">
+{% endblock %}
+  <title>Login</title>
+</head>
+<body>
+    <div class="login">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Login</button>
+  </form>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url "register_page" %}" style=" color:black; font-family: 'Times New Roman', Times, serif;">Don't have an account? Register here</a>
+  </li>
+
+</div>
+  <a id="home-url" href="#" data-url="{% url 'home' %}"></a>
+  <script>
+    const homeUrl = document.getElementById('home-url').dataset.url;
+    const loginForm = document.getElementById("loginForm");
+
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+      };
+
+      try {
+        const response = await fetch("http://localhost:8000/api/token/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const resData = await response.json();
+        
+
+        if (resData.access) {
+          localStorage.setItem("access_token", resData.access);
+          alert("Başarıyla giriş yaptınız!");
+          window.location.href = homeUrl;  // Buraya yönlendirme
+
+          // window.location.href = "/dashboard.html";
+          
+        } else {
+          alert("Giriş başarısız!");
+        }
+
+      } catch (error) {
+        alert("Hata oluştu!");
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

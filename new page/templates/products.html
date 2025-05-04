@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css_files %} 
+<link rel="stylesheet" href="{% static 'cssfiles/products.css' %}">
+{% endblock %}
+
+{% block title %} Products {% endblock %}
+
+
+{% block content %}
+<div>
+  <button id="autoClickButton" onclick="filterProduct('s-monitoring')" style="display: none;">
+      Otomatik Tıklama Butonu
+  </button>
+</div>
+
+
+<div class="wrapper" style="display: flex; align-items: center; background-color:transparent; margin-top:2em; ">
+  <div id="buttons" style="display: flex; flex-wrap: wrap; gap: 1em;">
+    <button class="button-value" onclick="filterProduct('all')">All</button>
+    <button class="button-value" onclick="filterProduct('s-monitoring')">Sterilizer Monitoring</button>
+    <button class="button-value" onclick="filterProduct('i-p-monitoring')">In-Pack Monitoring</button>
+    <button class="button-value" onclick="filterProduct('sbs')">Sterile Barrier Systems</button>
+    <button class="button-value" onclick="filterProduct('trace')">Traceability/Documentation</button>
+    <button class="button-value" onclick="filterProduct('cleaning')">Cleaning/Disinfection</button>
+    <button class="button-value" onclick="filterProduct('accs')">Accessories</button>
+  </div>
+  </div>
+  <div>
+  
+  
+  <div id="search-container" style="margin-left:70%; display: flex; align-items: center; ">
+    <input type="search" id="search-input" style="width: 250px; padding: 0.5em; font-size: 1em;" placeholder="Search product name here.." />
+    <button id="search">Search</button>
+  </div>
+
+
+  <div class="wrapper" style="margin-top:2em;">
+    <div id="products" data-static-url="{% static 'images/' %}"></div>
+  </div>
+</div>
+
+{% endblock %}
+{% block js_files %} <script src="{% static "jsfiles/product.js" %}"></script> {% endblock %}

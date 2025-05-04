@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css_files %} 
+<link rel="stylesheet" href="{% static 'cssfiles/product_details.css' %}">
+{% endblock %}
+
+{% block title %} Product Details {% endblock %}
+
+{% block content %}
+<section class="main-wrap">
+    <div class="product">
+        <div class="image-gallery">
+         <img src="{% static 'detailedimages/'|add:product.image %}" alt="{{ product.name }}">
+        </div>
+        <div class="product-details">
+            <div class="details">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+           </div>
+            
+        </div>
+    </div>
+</section>
+<section class="main-wrap">
+<div class="product">
+        <div class="product-details">
+            <p>
+                {{ product.chara }}
+            </p>
+            <p>
+                {{ product.charb }}
+            </p>
+            <p>
+                {{ product.charc }}
+            </p>
+            <p>
+                {{ product.chard }}
+            </p>
+            <p>
+                {{ product.chare }}
+            </p>
+            <p>
+                {{ product.charf }}
+            </p>
+        </div>
+        <div class="product-details">
+            <div class="details">
+                <h2>{{ product.refa }}</h2>
+                <h3>{{ product.refb }}</h3>
+                <h3>{{ product.refc }}</h3>
+                <h3>{{ product.refd }}</h3>
+                <h3>{{ product.refe }}</h3>
+                <h3> For more please see pdf</h3>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</section>
+<section class="main-wrap">
+    <div class="sub-btn">
+        <button class="submit" onclick="window.open('{% static 'sppdf/' %}{{ product.file }}', '_blank')">See More Details About {{ product.name }}</button>
+    </div>
+</div>
+</div>
+</section>
+
+
+{% endblock %}
+
+{% block js_files %} <script src="{% static "jsfiles/product_details.js" %}"></script> {% endblock %}

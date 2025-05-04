@@ -1,0 +1,90 @@
+.styled-hr{
+    color: rgba(18, 11, 3,255);
+
+}
+.contact-title {
+    
+    font-size: 2em; /* Font büyüklüğü */
+    color:white;
+    
+    margin-left: 20%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* İki item arasında boşluk bırakmak için */
+    align-items: center; /* Dikey hizalama */
+    margin-top:7%;
+    background-color: rgba(18, 11, 3, 0.642);
+    width: 100%;
+    
+    height: auto;
+    border-radius: 1em;
+    position: relative;
+    border: 3px solid rgb(0, 53, 101);
+    box-shadow: 10px 1px 10px rgba(0, 52, 101, 0.267);
+    overflow: hidden; 
+  }
+  
+  .item {
+    width: 55%; /* Genişlikleri ayarla */
+    margin-top: 3%;
+    
+    
+    
+    
+    
+  }
+  .item img {
+    width: 100%; /* Resmin genişliği %100 */
+    height: auto; /* Yüksekliği otomatik ayarla, oranı bozmadan */
+    object-fit: contain; /* Resmin tamamının görünmesini sağlar */
+}
+  .h5{
+    font: 1em sans-serif;
+  }
+  
+  .itemtext{
+    width:80%;
+    margin-left: 2%;
+    color: aliceblue;
+    
+  }
+
+  @media (max-width: 768px) {
+    .contact-title {
+        font-size: 1.5em;
+        margin-left: 0; /* Daha küçük ekranlarda başlık sola yaslanacak */
+        text-align: center; /* Başlık ortalanacak */
+    }
+
+    .container {
+        flex-direction: column; /* Ekran küçükse öğeleri dikey hizalayalım */
+        justify-content: center; /* Ortalayalım */
+        align-items: flex-start; /* Align items flex-start olmalı */
+    }
+
+    .item {
+        width: 100%; /* Küçük ekranlarda her item tam genişlikte olacak */
+        margin-bottom: 20px; /* Aralarına boşluk ekleyelim */
+    }
+
+    .itemtext {
+        width: 100%; /* Item metni tam genişlikte olacak */
+        margin-left: 0; /* Küçük ekranlarda soldan boşluk kaldırılacak */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-title {
+        font-size: 1.2em; /* Çok küçük ekranlarda başlık boyutunu küçültelim */
+    }
+
+    .container {
+        padding: 10px; /* Daha küçük ekranlarda padding değerini küçültelim */
+    }
+
+    .itemtext {
+        font-size: 0.9em; /* Metin boyutunu da küçültelim */
+    }
+}

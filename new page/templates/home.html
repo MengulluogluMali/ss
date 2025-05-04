@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css_files %} 
+<link rel="stylesheet" href="{% static 'cssfiles/home.css' %}">
+{% endblock %}
+{% block title %} Homepage {% endblock %}
+
+{% block content %}
+
+<div id="intro">
+  <img src="{% static 'images/splogo.png' %}" alt="Sp Medikal Logo " id="logo">
+</div>
+<div class="container">
+  <div id="spmedikalnews" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-indicators">
+      {% for item in carousel_items %}
+      <button type="button" data-bs-target="#spmedikalnews" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+      {% endfor %}
+    </div>
+    <div class="carousel-inner">
+      {% for item in carousel_items %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" style="z-index: 1; min-height:500px;">
+        <img src="{{ item.image.url }}" class="d-block w-100 img" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ item.title }}</h5>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#spmedikalnews" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#spmedikalnews" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+
+  
+<div class= "secondcontainer" style="display:flex; justify-content: center; align-items: center; ">
+  <div class="card mb-3" style="max-width: 1080px; background-color: rgba(18, 11, 3, 0.1);">
+    <div class="row g-0">
+      <div class="col-md-4 d-flex align-items-center" >
+        <img src="{% static "images/sterintech.png" %}" class="img-fluid rounded-start" alt="..." style="object-fit: contain;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" style=" color:white;">About Sterintech</h5>
+          <p class="card-text" style=" color:white;">SterinTech is an innovative company in medical technology, specializing in the production of hospital equipment, sterilization devices, and medical instruments. Committed to high quality and reliability, SterinTech enhances efficiency and patient safety in healthcare services. With a customer-centric approach, the company strives to support advancements in healthcare technology. Our products comply with the requirements as laid down in the latest versions of the following standards: </p>
+          <h5 style=" color:white;">  
+            - EN 285            
+        </h5>
+        <h5 style=" color:white;">
+            - EN 865 / 866 / 867 / 868
+        </h5>
+        <h5 style=" color:white;">
+            - ISO 13060 
+        </h5> 
+        <h5 style=" color:white;">
+            - ISO 11138 
+        </h5>
+        <h5 style=" color:white;">
+            - ISO 11140 
+        </h5>
+        <h5 style=" color:white;">
+            - ISO 11607 
+        </h5>
+          <p class="card-text"><small class="text-body-secondary"></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="thirdcontainer">
+  <h2 class="section-title">Best Seller Products</h2>
+  <div class="card" style="width: 18rem;">
+    <img src="{% static 'detailedimages/sixtytwo.png' %}" class="card-img-top" alt="Ultrason-Effıceny Test">
+    <div class="card-body">
+      <h5 class="card-title">UltraSon - Efficiency Test</h5>
+      <p class="card-text">Is your ultrasonic energy level OK?</p>
+      <a href="product_details/62" class="btn btn-primary">See Product</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="{% static 'detailedimages/twentythree.png' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">SCBI for STEAM with 8 hour PH reaction</h5>
+      <p class="card-text">Quickly monitoring - 8 Hours</p>
+      <a href="product_details/24" class="btn btn-primary">See Product</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="{% static 'detailedimages/thirtyfive.png' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Sterilization Rolls</h5>
+      <p class="card-text">60 gsm - green film</p>
+      <a href="product_details/35" class="btn btn-primary">See Product</a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+{% block js_files %} <script src="{% static "jsfiles/home.js" %}"></script> {% endblock %}
