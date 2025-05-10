@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css_files %} 
+<link rel="stylesheet" href="{% static 'cssfiles/contact.css' %}">
+{% endblock %}
+{% block title %} Contact us {% endblock %}
+
+{% block content %}
+<hr class="styled-hr">
+<h1 class="contact-title">Contact with us</h1>
+<hr class="styled-hr">
+
+<div class="container">
+<div class="cardhq" style="width: 18rem;">
+    <img src="{% static 'images/sphq.jpg' %}" class="card-img-top" alt="Sp Medikal Location" style="object-fit:fill; border-radius: 2em; border: 2px solid green">
+    <div class="card-body" style="margin-top:1em;">
+      <h5 class="card-title" style="color:aliceblue;">Headquarters</h5>
+      <p class="card-text" style="color:aliceblue;">Adress : Cubuklu Caddesi 39 - Deliklikaya - Arnavutkoy - İstanbul - TURKEY</p>
+      <a href="https://maps.app.goo.gl/jSJj3oo3NRvn6ant8" class="btn btn-primary">Get directions</a>
+    </div>
+  </div>
+  <div class="cardhq" style="width: 18rem;">
+    <img src="{% static 'images/mail.jpg' %}" class="card-img-top" alt="Sp Medikal Contact" style="object-fit:fill; border-radius: 2em; border: 2px solid green">
+    <div class="card-body" style="margin-top:1em;">
+      <h5 class="card-title" style="color:aliceblue;">E-mail </h5>
+      <p class="card-text" style="color:aliceblue;"> marketing@spmedikal.com                                                  </p>
+      <a href="mailto:marketing@spmedikal.com" class="btn btn-primary" style="margin-top: 49px;"> Send an e-mail</a>
+    </div>
+  </div>
+  <div class="cardhq" style="width: 18rem;">
+    <img src="{% static 'images/facebook-now-meta.jpg' %}" class="card-img-top" alt="Sp Medikal Contact" style="object-fit:fill; border-radius: 2em; border: 2px solid green">
+    <div class="card-body" style="margin-top:1em;">
+      <h5 class="card-title" style="color:aliceblue;">Social Media</h5>
+      <p class="card-text" style="color:aliceblue;">SP Medikal On Meta</p>
+      
+      <a href="https://www.facebook.com/profile.php?id=100057052676669" class="btn btn-primary" style="margin-top: 28px;">Visit Page</a>
+    </div>
+  
+  </div>
+ 
+</div>
+
+<div id="ContentPlaceHolderIcerik_gmaps" class="cmaps"><p>
+	<iframe allowfullscreen="" frameborder="0" height="550" width="100%" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6018.5183533767695!2d28.9213544!3d41.041461!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaa1d01040d4ecec6!2sSP+Medikal+San+Ltd+Sti!5e0!3m2!1str!2str!4v1524147073263" style="border:0" width="600"></iframe></p>
+</div>
+{% endblock %}

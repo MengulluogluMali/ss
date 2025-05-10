@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "YourAppName",
+    "slug": "your-app",
+    "platforms": ["ios", "android", "web"],
+    "scheme": "yourapp",  
+    "android": {
+      "package": "com.yourapp.android"
+    }
+  }
+}
