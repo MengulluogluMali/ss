@@ -4,11 +4,13 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/main/HomeScreen';
 import ProfileScreen from '../screens/main/ProfileScreen';
 import SettingsScreen from '../screens/main/SettingsScreen';
+import ProductsScreen from '../screens/main/ProductsScreen';
 
 export type MainStackParamList = {
   Home: undefined;
   Profile: undefined;
   Settings: undefined;
+   Products: undefined;
 };
 
 const Tab = createBottomTabNavigator<MainStackParamList>();
@@ -26,6 +28,8 @@ const MainStack = () => {
             iconName = focused ? 'person' : 'person-outline';
           } else if (route.name === 'Settings') {
             iconName = focused ? 'settings' : 'settings-outline';
+          } else if (route.name === 'Products') {
+            iconName = focused ? 'pricetag' : 'pricetag-outline';
           }
 
           return <Ionicons name={iconName as any} size={size} color={color} />;
@@ -37,6 +41,7 @@ const MainStack = () => {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Products" component={ProductsScreen} />
     </Tab.Navigator>
   );
 };
