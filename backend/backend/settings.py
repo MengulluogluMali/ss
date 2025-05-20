@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 from django.conf.urls.static import static
 
 
@@ -41,11 +42,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'django_extensions',
     'rest_framework',
+    'med',
     "chatbot",  
     'api',
     "core",
     'corsheaders',
-    'med',
+   
    
 ]
 
@@ -65,7 +67,7 @@ ROOT_URLCONF = "backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "med", "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
